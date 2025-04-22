@@ -1,6 +1,1 @@
-
-export SECRET_KEY='pokepoke'
-
-
-
-cd ./aetherios; flask run
+cd bar; python3 ./app.py

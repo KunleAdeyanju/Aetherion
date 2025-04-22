@@ -1,9 +1,27 @@
+from flask import Flask
+from models import db, User
+from os import path
+from routes import init_routes
 
-from flask import render_template, session # type: ignore
 
-from aetherios.models import Aetherios, ImageGen
-from flask_socketio import SocketIO # type: ignore
+def create_app():
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///aetherios.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    # Initialize the extension with the app
+    db.init_app(app)
+    
+    # Register all routes
+    init_routes(app)
+    
+    # Create database if it doesn't exist
+    if not path.exists('database.db'):
+        with app.app_context():
+            db.create_all()
+    
+    return app
 
-from . import create_app
-app = create_app()
-socketio = SocketIO(app)
+if __name__ == '__main__':
+    app = create_app()
+    app.run(debug=True)

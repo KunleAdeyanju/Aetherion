@@ -1,4 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy # type: ignore
+from flask_sqlalchemy import SQLAlchemy 
+from werkzeug.security import generate_password_hash, check_password_hash
+import random
 
 db = SQLAlchemy()
 
@@ -19,6 +21,8 @@ class Aetherios(db.Model):
     defense = db.Column(db.Integer)
     speed = db.Column(db.Integer)
     #  image_location = db.Column(db.String(64))
+
+    flame_name = [ ]
 
     def __init__(self, name, type1, type2, type3, species, element, color_palete,  \
                  home_region, height, weight, attack, defense, speed, image_location):
@@ -104,7 +108,27 @@ class Aetherios(db.Model):
     # def get_image_location(self):
     #     pass
 
-class ImageGen:
+    def generate_name():
+        """
+            Generates a random aetherios.
+        """
+        prefixes = ["Aqua", "Pyro", "Terra", "Electro", "Sylva", "Nocti", "Aero", "Chrono", "Cryo", "Meca", "Fanto", "Lumi", "Umbra", "Soni", "Vibra", "Spectro",
+                    "Flare", "Frost", "Storm", "Shadow", "Radiant", "Celestial", "Dusk", "Dawn", "Echo", "Rumble", "Static", "Tempest", "Twilight", "Aurora",
+                    "Blitz", "Comet", "Ember", "Gale", "Horizon", "Nebula", "Onyx", "Pulse", "Quasar", "Solaris", "Tidal", "Zenith", "Astral", "Crimson", "Emerald",
+                    "Ivory", "Obsidian", "Scarlet", "Violet", "Azure", "Cerulean", "Jade", "Amber", "Opal", "Quartz", "Ruby", "Sapphire", "Topaz"]
+        suffixes = ["drake", "wing", "horn", "claw", "tail", "strike", "shade", "beam", "frost", "drive", "geist", "flare", "howl", "pulse", "surge", "nova", "bloom", "shield",
+                    "fang", "scale", "talon", "venom", "wisp", "gaze", "roar", "song", "dancer", "weaver", "rider", "walker", "watcher", "warden", "slayer", "bringer",
+                    "caller", "shaper", "binder", "breaker", "champion", "conqueror", "defender", "destroyer", "guardian", "herald", "hunter", "knight", "master",
+                    "paladin", "ranger", "savior", "sovereign", "titan", "vanquisher", "voyager", "zephyr", "blaze", "cascade", "cyclone", "dusk", "ember", "frostbite",
+                    "hurricane", "nightfall", "sunburst", "thunderclap", "twilight"]
+        
+
+        prefix = random.choice(prefixes)
+        suffix = random.choice(suffixes)
+
+        return f"{prefix}{suffix}"  # No number
+
+class ImageGen(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
@@ -151,6 +175,39 @@ class ImageGen:
 
     def get_weight(self):
         return self.weight 
-    
 
+class User(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True)
+    email = db.Column(db.String(64))
+    password_hash = db.Column(db.Text)
+
+    def __repr__(self):
+        return f'<User {self.username}>'
+    
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email
+        }
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+    
+    def get_username(self):
+        return self.username
+    def set_username(self, username):
+        self.username = username
+    def get_email(self):
+        return self.email
+    def set_email(self, email):
+        self.email = email
+    def get_password_hash(self):
+        return self.password_hash
+    def set_password_hash(self, password_hash):
+        self.password_hash = password_hash
+    
 
