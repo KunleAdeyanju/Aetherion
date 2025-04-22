@@ -1,1 +1,1 @@
-cd bar; python3 ./app.py
+cd aetherios; python3 ./app.py
