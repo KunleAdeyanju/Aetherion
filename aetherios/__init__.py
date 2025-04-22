@@ -1,5 +1,5 @@
-import socketio
-from flask import Flask
+import socketio # type: ignore
+from flask import Flask # type: ignore
 from aetherios.routes import rt
 
 
