@@ -49,8 +49,13 @@ class Aetherios(db.Model):
     shark_name = ['fin', 'gill', 'hide', 'hammerhead', 'orca', 'maw']
     fairy_name = ['pixie', 'dew', 'twinkle', 'veil' 'sprite', 'nymph', ]
     goblin_name = ['snag', 'itch', 'ling', 'rascal', 'gremlin', 'imp', 'tooth']
-            
 
+    flame_locations = [ 'The Obsidian Forge', 'Crimson Expanse', 'Emberwood Grove']
+    water_locations = [ 'Obsidian Depths', 'Veridian Mire', 'Sunken City of Thalassa']
+    earth_locations = ['Stonehaven Highland', 'The Great Bedrock', 'Terraforged Mines']
+    thunder_locations = ['Solara Peaks', 'Skyfire Citadel', 'Voltaic Vales']
+    poison_locations = ['Valley of Blight','The Bog', 'Ruins of Miasma']
+    aura_locations = ['Astral Abyss', 'Starlit Glades', 'Radiant Forests', 'Luminous Plains']
 
     def __init__(self, name, element1, element2, element3, species, affinity, color_palete,  \
                  home_region, height, weight, attack, defense, speed, image_location):
@@ -69,89 +74,39 @@ class Aetherios(db.Model):
         self.speed = speed
         self.image_location = image_location
 
-    # defining getters and setters
-
-    def get_name(self):
-        return self.name
-    
-    def set_name(self, name):
-        self.name = name
-    
-    def get_types(self):
-        return (self.type1, self.type2, self.type3)
-    
-    def set_types(self, types): # types needs to be a tuples
-        self.type1 = types[0]
-        self.type2 = types[1]
-        self.type3 = types[2]
-
-    def get_species(self):
-        return self.species
-    
-    def set_species(self, species):
-        self.species = species
-
-    def get_element(self):
-        return self.element
-    
-    def set_element(self, element):
-        self.element = element
-
-    def get_color_palete(self):
-        return self.color_palete
-    
-    def set_color_palete(self, colors):
-        self.color_palete = colors
-
-    def get_home_region(self):
-        return self.home_region
-    
-    def set_home_region(self, home_region):
-        self.home_region = home_region
-    
-    def get_height(self):
-        return self.height
-    
-    def set_height(self, height):
-        self.height = height
-
-    def get_weight(self):
-        return self.weight 
-    
-    def set_weight(self, weight):
-        self.weight = weight
-    
-    def get_attack(self):
-        return self.attack
-    
-    def set_attack(self, attack):
-        self.attack = attack
-    
-    def get_defence(self):
-        return self.speed
-    
-    def set_defence(self, defence):
-        self.defense = defence
-    
-    # def get_image_location(self):
-    #     pass
+    # defining getters and setters      
 
     def generate_name(self):
         """
             Generates a random aetherios.
         """
         prefixes = self.fire_name + self.water_name + self.earth_name + self.thunder_name + self.poison_name + self.aura_name
-        suffixes = ["drake", "wing", "horn", "claw", "tail", "strike", "shade", "beam", "frost", "drive", "geist", "flare", "howl", "pulse", "surge", "nova", "bloom", "shield",
-                    "fang", "scale", "talon", "venom", "wisp", "gaze", "roar", "song", "dancer", "weaver", "rider", "walker", "watcher", "warden", "slayer", "bringer",
-                    "caller", "shaper", "binder", "breaker", "champion", "conqueror", "defender", "destroyer", "guardian", "herald", "hunter", "knight", "master",
-                    "paladin", "ranger", "savior", "sovereign", "titan", "vanquisher", "voyager", "zephyr", "blaze", "cascade", "cyclone", "dusk", "ember", "frostbite",
-                    "hurricane", "nightfall", "sunburst", "thunderclap", "twilight"]
+        suffixes = self.wolf_name + self.cat_name + self.drake_name + self.fox_name + self.golem_name + self.spider_name + \
+            self.bird_name + self.griffin_name + self.unicorn_name + self.shark_name + self.fairy_name + self.goblin_name
         
 
         prefix = random.choice(prefixes)
         suffix = random.choice(suffixes)
 
-        return f"{prefix}{suffix}"  # No number
+        return f"{prefix}{suffix}"
+    
+    def determine_element(self, name):
+        """
+            Determines the element of the aetherios.
+        """
+        # Every aetherios has at least one element
+        # 40% chance of having 2 elements
+        # 20% chance of having 3 elements
+        if random.random() < 0.4:
+            num_elm = 2
+            if random.random() < 0.2:
+                num_elm = 3
+        else:
+            num_elm = 1
+        
+        elements = [self.element1, self.element2, self.element3]
+        return random.choice(elements)
+    
 
 class ImageGen(db.Model):
 

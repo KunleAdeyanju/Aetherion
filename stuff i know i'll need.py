@@ -75,3 +75,17 @@ def name_brainstorm():
     shark_name = ['fin', 'gill', 'hide', 'hammerhead', 'orca', 'maw']
     fairy_name = ['pixie', 'dew', 'twinkle', 'veil' 'sprite', 'nymph', ] #'dryad', 'sylph'
     goblin_name = ['snag', 'itch', 'ling', 'rascal', 'gremlin', 'imp', 'tooth'] # snaggletooth
+
+
+    ["drake", "wing", "horn", "claw", "tail", "strike", "shade", "beam", "frost", "drive", "geist", "flare", "howl", "pulse", "surge", "nova", "bloom", "shield",
+                    "fang", "scale", "talon", "venom", "wisp", "gaze", "roar", "song", "dancer", "weaver", "rider", "walker", "watcher", "warden", "slayer", "bringer",
+                    "caller", "shaper", "binder", "breaker", "champion", "conqueror", "defender", "destroyer", "guardian", "herald", "hunter", "knight", "master",
+                    "paladin", "ranger", "savior", "sovereign", "titan", "vanquisher", "voyager", "zephyr", "blaze", "cascade", "cyclone", "dusk", "ember", "frostbite",
+                    "hurricane", "nightfall", "sunburst", "thunderclap", "twilight"]
+    
+    flame_locations = [ 'The Obsidian Forge', 'Crimson Expanse', 'Volcanic Caldera' 'Emberwood Grove', 'Blazing Peaks', 'Cinder Marshes', 'Inferno Abyss']
+    water_locations = ['Sunken City of Thalassa','Azure Coast', 'Veridian Mire', 'Azure Abyss', 'Tidal Marshes', 'Crystal Springs', 'Ocean Depths', 'Coral Reefs', 'Frozen Tundra']
+    earth_locations = ['Stonehaven Highland', 'The Great Bedrock', 'Terraforged Mines', 'Whispering Savannah', 'Terra Canyons', 'Granite Mountains', 'Basalt Caverns', 'Obsidian Peaks', 'Emerald Forests', 'Ivory Plains', 'Sylvan Glades']
+    thunder_locations = ['Solara Peaks', 'Stormfang Steppes', 'Tempest Peaks', 'Stormy Highlands', 'Electro Abyss', 'Thunderous Plains', 'Lightning Marshes', 'Rumbling Canyons']
+    poison_locations = ['Veridian Mire', 'Shadownfen','Toxic Marshes', 'Venomous Swamps', 'Decay Caverns', 'Corrupted Forests', 'Blighted Plains', 'Contagion Abyss']
+    aura_locations = ['The Silent Sanctum', 'Solara Peaks', 'Celestial Peaks', 'Astral Abyss', 'Starlit Glades', 'Radiant Forests', 'Luminous Plains', 'Ethereal Marshes', 'Twilight Highlands', 'Glimmering Canyons']
