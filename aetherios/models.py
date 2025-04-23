@@ -12,7 +12,7 @@ class Aetherios(db.Model):
     type2 = db.Column(db.String(64))
     type3 = db.Column(db.String(64))
     species = db.Column(db.String(64))
-    element = db.Column(db.String(64))
+    affinity = db.Column(db.String(64))
     color_palete = db.Column(db.String(64))
     home_region = db.Column(db.String(64))
     height = db.Column(db.Float)
@@ -22,16 +22,27 @@ class Aetherios(db.Model):
     speed = db.Column(db.Integer)
     #  image_location = db.Column(db.String(64))
 
-    flame_name = [ ]
 
-    def __init__(self, name, type1, type2, type3, species, element, color_palete,  \
+    fire_name = ['Pyro', 'Flare', 'Solaris', 'Crimson', 'Sclarlet', 'Amber', 'Ruby', 'Singe', 'Ingite', 'Inferno', 'Scorch', 'Blaze']
+    water_name = ['Aqua', 'Cryo', 'Pluse', 'Tidal', 'Abyssal', 'Azure', 'Cerulean', 'Nautilus', 'Marine', 'Hydro', 'Tusunami', 'Wave', 'Mist']
+    earth_name = ['Terra', 'Gaia', 'Gaea', 'Geo', 'Quake', 'Tremor', 'Seismic', 'Granite', 'Basalt', 'Obsidian', 'Ivory', 'Sylva']
+    thunder_name = ['Volt', 'Storm', 'Tempest', 'Electro', 'Surge', 'Bolt', 'Static', 'Flash', 'Jolt', 'Boom', 'Rumble', 'Zap']
+    poison_name = ['Toxin', 'Venom', 'Decay', 'Corrupt', 'Blight', 'Contagion', 'Plague', 'Scourge', 'Pestil', 'Nox', 'Septi', 'Viro', 'Tox', 'Rot', 'Decay']
+    aura_name = ['Aura', 'Luster', 'Gleam', 'Glimmer', 'Twinkle', 'Sparkle', 'Dazzle', 'Glint', 'Beam', 'Ray', 'Shine', 'Radiant', 'Stardust']
+    
+    speices = ['Goblin', 'Fox', 'Wolf', 'Cat', 'Bird', 'Drake', 'Shark', 'Fairy', 'Golem', 'Spider', 'Griffin', 'Unicorn']
+    elements = ['Fire', 'Water', 'Earth', 'Thunder', 'Poison', 'Aura']
+        
+
+
+    def __init__(self, name, type1, type2, type3, species, affinity, color_palete,  \
                  home_region, height, weight, attack, defense, speed, image_location):
         self.name = name
         self.type1 = type1
         self.type2 = type2
         self.type3 = type3
         self.species = species
-        self.element = element
+        self.affinity = affinity
         self.color_palete = color_palete
         self.home_region = home_region
         self.height = height
@@ -108,14 +119,11 @@ class Aetherios(db.Model):
     # def get_image_location(self):
     #     pass
 
-    def generate_name():
+    def generate_name(self):
         """
             Generates a random aetherios.
         """
-        prefixes = ["Aqua", "Pyro", "Terra", "Electro", "Sylva", "Nocti", "Aero", "Chrono", "Cryo", "Meca", "Fanto", "Lumi", "Umbra", "Soni", "Vibra", "Spectro",
-                    "Flare", "Frost", "Storm", "Shadow", "Radiant", "Celestial", "Dusk", "Dawn", "Echo", "Rumble", "Static", "Tempest", "Twilight", "Aurora",
-                    "Blitz", "Comet", "Ember", "Gale", "Horizon", "Nebula", "Onyx", "Pulse", "Quasar", "Solaris", "Tidal", "Zenith", "Astral", "Crimson", "Emerald",
-                    "Ivory", "Obsidian", "Scarlet", "Violet", "Azure", "Cerulean", "Jade", "Amber", "Opal", "Quartz", "Ruby", "Sapphire", "Topaz"]
+        prefixes = self.fire_name + self.water_name + self.earth_name + self.thunder_name + self.poison_name + self.aura_name
         suffixes = ["drake", "wing", "horn", "claw", "tail", "strike", "shade", "beam", "frost", "drive", "geist", "flare", "howl", "pulse", "surge", "nova", "bloom", "shield",
                     "fang", "scale", "talon", "venom", "wisp", "gaze", "roar", "song", "dancer", "weaver", "rider", "walker", "watcher", "warden", "slayer", "bringer",
                     "caller", "shaper", "binder", "breaker", "champion", "conqueror", "defender", "destroyer", "guardian", "herald", "hunter", "knight", "master",
