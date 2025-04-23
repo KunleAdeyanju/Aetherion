@@ -23,6 +23,7 @@ class Aetherios(db.Model):
     #  image_location = db.Column(db.String(64))
 
 
+    
     fire_name = ['Pyro', 'Flare', 'Solaris', 'Crimson', 'Sclarlet', 'Amber', 'Ruby', 'Singe', 'Ingite', 'Inferno', 'Scorch', 'Blaze']
     water_name = ['Aqua', 'Cryo', 'Pluse', 'Tidal', 'Abyssal', 'Azure', 'Cerulean', 'Nautilus', 'Marine', 'Hydro', 'Tusunami', 'Wave', 'Mist']
     earth_name = ['Terra', 'Gaia', 'Gaea', 'Geo', 'Quake', 'Tremor', 'Seismic', 'Granite', 'Basalt', 'Obsidian', 'Ivory', 'Sylva']
@@ -30,10 +31,12 @@ class Aetherios(db.Model):
     poison_name = ['Toxin', 'Venom', 'Decay', 'Corrupt', 'Blight', 'Contagion', 'Plague', 'Scourge', 'Pestil', 'Nox', 'Septi', 'Viro', 'Tox', 'Rot', 'Decay']
     aura_name = ['Aura', 'Luster', 'Gleam', 'Glimmer', 'Twinkle', 'Sparkle', 'Dazzle', 'Glint', 'Beam', 'Ray', 'Shine', 'Radiant', 'Stardust']
     
+    
     elements = ['Fire', 'Water', 'Earth', 'Thunder', 'Poison', 'Aura']
-
+    affinity = ['Celestial', 'Deva', 'Etheral', 'Astral', 'Void', 'Nether', None]
     speices = ['Goblin', 'Fox', 'Wolf', 'Cat', 'Bird', 'Drake', 'Shark', 'Fairy', 'Golem', 'Spider', 'Griffin', 'Unicorn']
 
+    
     wolf_name = ['fenris', 'lupin', 'lycan', 'warg', 'kin', 'fang', 'lobo']
     cat_name = ['felis','lynx', 'saber','purr', 'paw', 'patch', 'streak']
     drake_name = ['draco', 'serpent', 'wyrm', 'breath', 'scale', 'gorge']
@@ -49,12 +52,12 @@ class Aetherios(db.Model):
             
 
 
-    def __init__(self, name, type1, type2, type3, species, affinity, color_palete,  \
+    def __init__(self, name, element1, element2, element3, species, affinity, color_palete,  \
                  home_region, height, weight, attack, defense, speed, image_location):
         self.name = name
-        self.type1 = type1
-        self.type2 = type2
-        self.type3 = type3
+        self.element1 = element1
+        self.element2 = element2
+        self.element3 = element3
         self.species = species
         self.affinity = affinity
         self.color_palete = color_palete
