@@ -30,9 +30,23 @@ class Aetherios(db.Model):
     poison_name = ['Toxin', 'Venom', 'Decay', 'Corrupt', 'Blight', 'Contagion', 'Plague', 'Scourge', 'Pestil', 'Nox', 'Septi', 'Viro', 'Tox', 'Rot', 'Decay']
     aura_name = ['Aura', 'Luster', 'Gleam', 'Glimmer', 'Twinkle', 'Sparkle', 'Dazzle', 'Glint', 'Beam', 'Ray', 'Shine', 'Radiant', 'Stardust']
     
-    speices = ['Goblin', 'Fox', 'Wolf', 'Cat', 'Bird', 'Drake', 'Shark', 'Fairy', 'Golem', 'Spider', 'Griffin', 'Unicorn']
     elements = ['Fire', 'Water', 'Earth', 'Thunder', 'Poison', 'Aura']
-        
+
+    speices = ['Goblin', 'Fox', 'Wolf', 'Cat', 'Bird', 'Drake', 'Shark', 'Fairy', 'Golem', 'Spider', 'Griffin', 'Unicorn']
+
+    wolf_name = ['fenris', 'lupin', 'lycan', 'warg', 'kin', 'fang', 'lobo']
+    cat_name = ['felis','lynx', 'saber','purr', 'paw', 'patch', 'streak']
+    drake_name = ['draco', 'serpent', 'wyrm', 'breath', 'scale', 'gorge']
+    fox_name = ['kitsune', 'vulpes', 'renard', 'gumiho', 'fuchsi', 'huli']
+    golem_name = ['maton', 'droid', 'borg', 'mech', 'bot']
+    spider_name = ['weaver', 'spinner', 'crawler', 'stalker', 'lurker','widow', 'legs']
+    bird_name = ['talon', 'feather', 'sparrow', 'crest', 'reign', 'claw']
+    griffin_name = ['sphinx', 'chimaera', 'gaze', 'soar', 'guard', 'strike', 'wingbeast', 'aerie']
+    unicorn_name = ['pegasus', 'alicorn', 'horn', 'steed', 'hoof', 'mane']
+    shark_name = ['fin', 'gill', 'hide', 'hammerhead', 'orca', 'maw']
+    fairy_name = ['pixie', 'dew', 'twinkle', 'veil' 'sprite', 'nymph', ]
+    goblin_name = ['snag', 'itch', 'ling', 'rascal', 'gremlin', 'imp', 'tooth']
+            
 
 
     def __init__(self, name, type1, type2, type3, species, affinity, color_palete,  \
