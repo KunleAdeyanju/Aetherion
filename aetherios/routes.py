@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from models import db, User
+from models import db, User, Aetherios
 
 
 
@@ -46,3 +46,8 @@ def init_routes(app):
         db.session.delete(user)
         db.session.commit()
         return '', 204
+    
+    @app.route('/aetherios', methods=['GET'])
+    def get_atherios():
+        atherios = Aetherios.query.all()
+        return jsonify([a.to_dict() for a in atherios])

@@ -8,19 +8,27 @@ class Aetherios(db.Model):
     # building the database
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
-    type1 = db.Column(db.String(64))
-    type2 = db.Column(db.String(64))
-    type3 = db.Column(db.String(64))
+    element1 = db.Column(db.String(64))
+    # element2 = db.Column(db.String(64))
+    # element3 = db.Column(db.String(64))
     species = db.Column(db.String(64))
-    affinity = db.Column(db.String(64))
-    color_palete = db.Column(db.String(64))
-    home_region = db.Column(db.String(64))
-    height = db.Column(db.Float)
-    weight = db.Column(db.Float)
-    attack = db.Column(db.Integer)
-    defense = db.Column(db.Integer)
-    speed = db.Column(db.Integer)
+    # affinity = db.Column(db.String(64))
+    # color_palete = db.Column(db.String(64))
+    # home_region = db.Column(db.String(64))
+    # height = db.Column(db.Float)
+    # weight = db.Column(db.Float)
+    # attack = db.Column(db.Integer)
+    # defense = db.Column(db.Integer)
+    # speed = db.Column(db.Integer)
     #  image_location = db.Column(db.String(64))
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'element1': self.element1,
+            'species': self.species
+        }
 
 
     
@@ -31,7 +39,15 @@ class Aetherios(db.Model):
     poison_name = ['Toxin', 'Venom', 'Decay', 'Corrupt', 'Blight', 'Contagion', 'Plague', 'Scourge', 'Pestil', 'Nox', 'Septi', 'Viro', 'Tox', 'Rot', 'Decay']
     aura_name = ['Aura', 'Luster', 'Gleam', 'Glimmer', 'Twinkle', 'Sparkle', 'Dazzle', 'Glint', 'Beam', 'Ray', 'Shine', 'Radiant', 'Stardust']
     
-    
+    elemental_dict = {
+            'Fire' : fire_name,
+            'Water' : water_name,
+            'Earth' : earth_name,
+            'Thunder' : thunder_name,
+            'Poison' : poison_name,
+            'Aura' : aura_name
+    }
+
     elements = ['Fire', 'Water', 'Earth', 'Thunder', 'Poison', 'Aura']
     affinity = ['Celestial', 'Deva', 'Etheral', 'Astral', 'Void', 'Nether', None]
     speices = ['Goblin', 'Fox', 'Wolf', 'Cat', 'Bird', 'Drake', 'Shark', 'Fairy', 'Golem', 'Spider', 'Griffin', 'Unicorn']
@@ -57,22 +73,34 @@ class Aetherios(db.Model):
     poison_locations = ['Valley of Blight','The Bog', 'Ruins of Miasma']
     aura_locations = ['Astral Abyss', 'Starlit Glades', 'Radiant Forests', 'Luminous Plains']
 
-    def __init__(self, name, element1, element2, element3, species, affinity, color_palete,  \
-                 home_region, height, weight, attack, defense, speed, image_location):
-        self.name = name
-        self.element1 = element1
-        self.element2 = element2
-        self.element3 = element3
-        self.species = species
-        self.affinity = affinity
-        self.color_palete = color_palete
-        self.home_region = home_region
-        self.height = height
-        self.weight = weight
-        self.attack = attack
-        self.defense = defense
-        self.speed = speed
-        self.image_location = image_location
+    def get_key_by_value(my_dict, target_value):
+        """
+            Returns the first key in the dictionary that matches the target value.
+            If no key is found, returns None.
+        """
+        for key, value in my_dict.items():
+            if target_value in value:
+                return key
+        
+    # def __init__(self, name, element1, element2, element3, ):
+    #     """
+    #         species, affinity, color_palete,  \
+    #              home_region, height, weight, attack, defense, speed, image_location
+    #     """
+    #     self.name = name
+    #     self.element1 = element1
+    #     self.element2 = element2
+    #     self.element3 = element3
+    #     # self.species = species
+    #     # self.affinity = affinity
+    #     # self.color_palete = color_palete
+    #     # self.home_region = home_region
+    #     # self.height = height
+    #     # self.weight = weight
+    #     # self.attack = attack
+    #     # self.defense = defense
+    #     # self.speed = speed
+    #     # self.image_location = image_location
 
     # defining getters and setters      
 
@@ -84,13 +112,16 @@ class Aetherios(db.Model):
         suffixes = self.wolf_name + self.cat_name + self.drake_name + self.fox_name + self.golem_name + self.spider_name + \
             self.bird_name + self.griffin_name + self.unicorn_name + self.shark_name + self.fairy_name + self.goblin_name
         
-
-        prefix = random.choice(prefixes)
-        suffix = random.choice(suffixes)
-
-        return f"{prefix}{suffix}"
+        # Check if name already exists in the database
+        while True:
+            prefix = random.choice(prefixes)
+            suffix = random.choice(suffixes)
+            name = prefix + suffix
+            if Aetherios.query.filter_by(name=name).first() is not None:
+                self.name = name
+                return (prefix, suffix)
     
-    def determine_element(self, name):
+    def determine_element(self, name_prefix):
         """
             Determines the element of the aetherios.
         """
@@ -103,9 +134,28 @@ class Aetherios(db.Model):
                 num_elm = 3
         else:
             num_elm = 1
+
+        first_element = self.get_key_by_value(self.elemental_dict, name_prefix)
+        unique_elements = random.sample(self.elements.remove(first_element), num_elm-1)
+
+        if num_elm == 1:
+            
+            self.element1 = first_element
+            self.element2 = None
+            self.element3 = None
+        elif num_elm == 2:
+            
+            self.element1 = first_element
+            self.element2 = unique_elements[0]
+            self.element3 = None
+        else:   
+            self.element1 = first_element
+            self.element2 = unique_elements[0]
+            self.element3 = unique_elements[1]
+
         
         elements = [self.element1, self.element2, self.element3]
-        return random.choice(elements)
+        return elements
     
 
 class ImageGen(db.Model):
@@ -177,17 +227,16 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
     
-    def get_username(self):
-        return self.username
-    def set_username(self, username):
-        self.username = username
-    def get_email(self):
-        return self.email
-    def set_email(self, email):
-        self.email = email
-    def get_password_hash(self):
-        return self.password_hash
-    def set_password_hash(self, password_hash):
-        self.password_hash = password_hash
+    # def get_username(self):
+    #     return self.username
+    # def set_username(self, username):
+    #     self.username = username
+    # def get_email(self):
+    #     return self.email
+    # def set_email(self, email):
+    #     self.email = email
+    # def get_password_hash(self):
+    #     return self.password_hash
+    # def set_password_hash(self, password_hash):
+    #     self.password_hash = password_hash
     
-

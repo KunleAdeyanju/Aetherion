@@ -89,3 +89,33 @@ def name_brainstorm():
     thunder_locations = ['Solara Peaks', 'Stormfang Steppes', 'Tempest Peaks', 'Stormy Highlands', 'Electro Abyss', 'Thunderous Plains', 'Lightning Marshes', 'Rumbling Canyons']
     poison_locations = ['Veridian Mire', 'Shadownfen','Toxic Marshes', 'Venomous Swamps', 'Decay Caverns', 'Corrupted Forests', 'Blighted Plains', 'Contagion Abyss']
     aura_locations = ['The Silent Sanctum', 'Solara Peaks', 'Celestial Peaks', 'Astral Abyss', 'Starlit Glades', 'Radiant Forests', 'Luminous Plains', 'Ethereal Marshes', 'Twilight Highlands', 'Glimmering Canyons']
+
+    fire_name = ['Pyro', 'Flare', 'Solaris', 'Crimson', 'Sclarlet', 'Amber', 'Ruby', 'Singe', 'Ingite', 'Inferno', 'Scorch', 'Blaze']
+    water_name = ['Aqua', 'Cryo', 'Pluse', 'Tidal', 'Abyssal', 'Azure', 'Cerulean', 'Nautilus', 'Marine', 'Hydro', 'Tusunami', 'Wave', 'Mist']
+    earth_name = ['Terra', 'Gaia', 'Gaea', 'Geo', 'Quake', 'Tremor', 'Seismic', 'Granite', 'Basalt', 'Obsidian', 'Ivory', 'Sylva']
+    thunder_name = ['Volt', 'Storm', 'Tempest', 'Electro', 'Surge', 'Bolt', 'Static', 'Flash', 'Jolt', 'Boom', 'Rumble', 'Zap']
+    poison_name = ['Toxin', 'Venom', 'Decay', 'Corrupt', 'Blight', 'Contagion', 'Plague', 'Scourge', 'Pestil', 'Nox', 'Septi', 'Viro', 'Tox', 'Rot', 'Decay']
+    aura_name = ['Aura', 'Luster', 'Gleam', 'Glimmer', 'Twinkle', 'Sparkle', 'Dazzle', 'Glint', 'Beam', 'Ray', 'Shine', 'Radiant', 'Stardust']
+    
+
+    #  def to_dict(self):
+    #     return {
+    #         'id': self.id,
+    #         'name': self.name,
+    #         'element': self.element1,
+    #         'species': self.species
+    #     }
+
+    aetherios_dicts = [
+        {'id': 1, 'name' :'Pyrotalon', 'element': 'Fire', 'species': 'Bird'},
+        {'id': 2, 'name' : 'Aquadroid', 'element': 'Water', 'species': 'Golem'},
+        {'id': 3, 'name' : 'Terrawyrm', 'element': 'Earth', 'species': 'Drake'},
+        {'id': 4, 'name' : 'Voltwarg', 'element': 'Thunder', 'species': 'Wolf'},
+        {'id': 5, 'name' : 'Venomrenard', 'element': 'Poison', 'species': 'Fox'},
+        {'id': 6, 'name' : 'Raysprite', 'element': 'Aura', 'species': 'Fairy'}
+        {'id': 7, 'name' : 'Scorchscale', 'element': 'Fire', 'species': 'Drake'},
+        {'id': 8, 'name' : 'Cyrokin', 'element': 'Water', 'species': 'Wolf'},
+        {'id': 9, 'name' : 'Geomech', 'element': 'Earth', 'species': 'Golem'},
+        {'id': 10, 'name' : 'Staticcrest', 'element': 'Thunder', 'species': 'Bird'}
+        
+    ]
