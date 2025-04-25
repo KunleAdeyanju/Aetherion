@@ -2,7 +2,7 @@ from flask import Flask
 from models import db, User, Aetherios
 from os import path
 from routes import init_routes
-
+from flask_cors import CORS
 
 def create_app():
     app = Flask(__name__)
@@ -14,6 +14,9 @@ def create_app():
     
     # Register all routes
     init_routes(app)
+
+    CORS(app, resources={r"/*": {"origins": "http://localhost:9000"}})
+
     
     # Create database if it doesn't exist
     if not path.exists('database.db'):
