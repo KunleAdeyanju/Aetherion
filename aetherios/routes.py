@@ -4,7 +4,10 @@ from models import db, User, Aetherios
 
 
 def init_routes(app):
-    @app.route('/hi', methods=['GET'])
+    
+    @app.route
+
+    @app.route('/', methods=['GET'])
     def hi():
         return "Hello, World!"
 

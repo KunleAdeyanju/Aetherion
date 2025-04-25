@@ -50,4 +50,5 @@ if __name__ == '__main__':
     app = create_app()
     populate_db()
     # Run the app
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(port = 8080, debug=True)
