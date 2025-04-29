@@ -73,6 +73,7 @@ class Aetherios(db.Model):
     poison_locations = ['Valley of Blight','The Bog', 'Ruins of Miasma']
     aura_locations = ['Astral Abyss', 'Starlit Glades', 'Radiant Forests', 'Luminous Plains']
 
+    demenor = ['Majestic', 'Fierce', 'Calm', 'Laid Back', 'Angry', 'Jealous', 'Cautious', 'Fearful', 'Gentle Protetor', 'Intimidating', 'Cunning']
     def get_key_by_value(my_dict, target_value):
         """
             Returns the first key in the dictionary that matches the target value.
