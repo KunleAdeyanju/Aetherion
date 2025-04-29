@@ -55,6 +55,13 @@ def init_routes(app):
         atherios = Aetherios.query.all()
         return jsonify([a.to_dict() for a in atherios])
     
+    @app.route('/aetherios/<int:aether_id>', methods=['GET'])
+    def get_atherios_id(aether_id):
+        atherios = Aetherios.query.get_or_404(aether_id)
+        return jsonify(atherios.to_dict())
+    
+  
+    
     # @app.route('/a', methods=['GET'])
     # def get_atherios():
     #     atherios = Aetherios.query.all()
