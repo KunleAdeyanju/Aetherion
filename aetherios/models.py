@@ -32,8 +32,8 @@ class Aetherios(db.Model):
 
 
     
-    fire_name = ['Pyro', 'Flare', 'Solaris', 'Crimson', 'Sclarlet', 'Amber', 'Ruby', 'Singe', 'Ingite', 'Inferno', 'Scorch', 'Blaze']
-    water_name = ['Aqua', 'Cryo', 'Pluse', 'Tidal', 'Abyssal', 'Azure', 'Cerulean', 'Nautilus', 'Marine', 'Hydro', 'Tusunami', 'Wave', 'Mist']
+    fire_name = ['Pyro', 'Flare', 'Solaris', 'Crimson', 'Scarlet', 'Amber', 'Ruby', 'Singe', 'Ingite', 'Inferno', 'Scorch', 'Blaze']
+    water_name = ['Aqua', 'Cryo', 'Pulse', 'Tidal', 'Abyssal', 'Azure', 'Cerulean', 'Nautilus', 'Marine', 'Hydro', 'Tsunami', 'Wave', 'Mist']
     earth_name = ['Terra', 'Gaia', 'Gaea', 'Geo', 'Quake', 'Tremor', 'Seismic', 'Granite', 'Basalt', 'Obsidian', 'Ivory', 'Sylva']
     thunder_name = ['Volt', 'Storm', 'Tempest', 'Electro', 'Surge', 'Bolt', 'Static', 'Flash', 'Jolt', 'Boom', 'Rumble', 'Zap']
     poison_name = ['Toxin', 'Venom', 'Decay', 'Corrupt', 'Blight', 'Contagion', 'Plague', 'Scourge', 'Pestil', 'Nox', 'Septi', 'Viro', 'Tox', 'Rot', 'Decay']
